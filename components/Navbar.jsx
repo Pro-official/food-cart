@@ -31,12 +31,14 @@ const Navbar = () => {
     <>
       <Popover className="absolute top-0 w-full lg:max-w-6xl mx-auto py-10 flex items-center justify-between">
         <Link href="/" passHref>
-          <Image
-            src="https://cdn.cmsfly.com/63ee134969c752004dc4ac3f/frame-1000007267-UOzbnn.png"
-            alt="hero food banner"
-            width={160}
-            height={54}
-          />
+          <a>
+            <Image
+              src="https://cdn.cmsfly.com/63ee134969c752004dc4ac3f/frame-1000007267-UOzbnn.png"
+              alt="hero food banner"
+              width={160}
+              height={54}
+            />
+          </a>
         </Link>
 
         <Popover.Group as="nav" className="hidden md:flex space-x-10">

@@ -7,8 +7,16 @@ import Featured from "../components/Featured";
 import PizzaList from "../components/PizzaList";
 import styles from "../styles/Home.module.css";
 
-export default function Home({ pizzaList, admin }) {
-  console.log(pizzaList, "pizzalist");
+export default function Home({ products, admin }) {
+  const altProducts = [
+    {
+      id: "1",
+      desc: "Delicious",
+      img: "https://images.unsplash.com/photo-1588315029754-2dd089d39a1a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
+      title: "Kacchi Biriyani",
+      prices: [5],
+    },
+  ];
   const [close, setClose] = useState(true);
   return (
     <div className={styles.container}>
@@ -20,7 +28,7 @@ export default function Home({ pizzaList, admin }) {
       <Featured />
       <h1>Hey there</h1>
       <AddButton setClose={setClose} />
-      {pizzaList && <PizzaList pizzaList={pizzaList} />}
+      <PizzaList pizzaList={products ?? altProducts} />
       {!close && <Add setClose={setClose} />}
     </div>
   );
@@ -35,12 +43,10 @@ export const getServerSideProps = async (ctx) => {
   }
 
   const res = await axios.get("http://localhost:3000/api/products");
-  if (res.length > 0) {
-    return {
-      props: {
-        pizzaList: res?.data,
-        admin,
-      },
-    };
-  }
+  return {
+    props: {
+      products: res?.data,
+      admin,
+    },
+  };
 };

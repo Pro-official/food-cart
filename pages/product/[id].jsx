@@ -99,21 +99,21 @@ const Product = ({ pizza }) => {
   );
 };
 
-// export const getStaticPaths = async () => {
-//   const res = await axios.get(`http://localhost:3000/api/products`);
-//   const paths = res.data?.map((product) => ({
-//     params: { id: product._id },
-//   }));
-//   return { paths, fallback: false };
-// };
+export const getStaticPaths = async () => {
+  const res = await axios.get(`http://localhost:3000/api/products`);
+  const paths = res.data?.map((product) => ({
+    params: { id: product._id },
+  }));
+  return { paths, fallback: false };
+};
 
-export const getServerSideProps = async ({ params }) => {
+export const getStaticProps = async ({ params }) => {
   const res = await axios.get(
     `http://localhost:3000/api/products/${params.id}`
   );
   return {
     props: {
-      pizza: res.data,
+      pizza: res?.data,
     },
   };
 };
