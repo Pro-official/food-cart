@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "../styles/PizzaList.module.css";
 import PizzaCard from "./PizzaCard";
 
@@ -12,7 +13,14 @@ const PizzaList = ({ pizzaList }) => {
       </p>
       <div className={styles.wrapper}>
         {pizzaList.map((pizza) => (
-          <PizzaCard key={pizza._id} pizza={pizza} />
+          <Link
+            key={pizza._id}
+            href={`/product/${pizza._id}`}
+            passHref
+            legacyBehavior
+          >
+            <PizzaCard pizza={pizza} />
+          </Link>
         ))}
       </div>
     </div>

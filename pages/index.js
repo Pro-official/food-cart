@@ -1,6 +1,5 @@
 import axios from "axios";
 import Head from "next/head";
-import Image from "next/image";
 import { useState } from "react";
 import Add from "../components/Add";
 import AddButton from "../components/AddButton";
@@ -13,11 +12,12 @@ export default function Home({ pizzaList, admin }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Pizza Restaurant in Newyork</title>
+        <title>It&rsquo;s Food time</title>
         <meta name="description" content="Best pizza shop in town" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Featured />
+      <h1>Hey there</h1>
       {<AddButton setClose={setClose} />}
       <PizzaList pizzaList={pizzaList} />
       {!close && <Add setClose={setClose} />}
@@ -36,7 +36,7 @@ export const getServerSideProps = async (ctx) => {
   const res = await axios.get("http://localhost:3000/api/products");
   return {
     props: {
-      pizzaList: res.data,
+      pizzaList: res?.data,
       admin,
     },
   };
