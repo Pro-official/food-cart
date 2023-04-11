@@ -3,6 +3,7 @@ import styles from "../styles/PizzaList.module.css";
 import PizzaCard from "./PizzaCard";
 
 const PizzaList = ({ pizzaList }) => {
+  const products = pizzaList ?? [];
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>THE BEST PIZZA IN TOWN</h1>
@@ -12,14 +13,14 @@ const PizzaList = ({ pizzaList }) => {
         sit amet, consectetur adipiscing elit.
       </p>
       <div className={styles.wrapper}>
-        {pizzaList.map((pizza) => (
+        {products.map((product) => (
           <Link
-            key={pizza._id}
-            href={`/product/${pizza._id}`}
+            key={product._id}
+            href={`/product/${product._id}`}
             passHref
             legacyBehavior
           >
-            <PizzaCard pizza={pizza} />
+            <PizzaCard pizza={product} />
           </Link>
         ))}
       </div>
