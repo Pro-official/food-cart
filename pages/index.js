@@ -8,6 +8,7 @@ import PizzaList from "../components/PizzaList";
 import styles from "../styles/Home.module.css";
 
 export default function Home({ pizzaList, admin }) {
+  console.log(pizzaList, "pizzalist");
   const [close, setClose] = useState(true);
   return (
     <div className={styles.container}>
@@ -18,8 +19,8 @@ export default function Home({ pizzaList, admin }) {
       </Head>
       <Featured />
       <h1>Hey there</h1>
-      {<AddButton setClose={setClose} />}
-      {/* <PizzaList pizzaList={pizzaList} /> */}
+      <AddButton setClose={setClose} />
+      {pizzaList && <PizzaList pizzaList={pizzaList} />}
       {!close && <Add setClose={setClose} />}
     </div>
   );
